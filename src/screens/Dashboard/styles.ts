@@ -1,4 +1,8 @@
 import styled from "styled-components/native";
+import { FlatList, FlatListProps } from "react-native";
+import { DataListProps } from ".";
+
+import Feather from '@expo/vector-icons/Feather';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 const Container = styled.View`
@@ -10,7 +14,7 @@ const Header = styled.View`
   width: 100%;
   height: ${RFPercentage(42)}px;
 
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: row;
 
@@ -19,7 +23,12 @@ const Header = styled.View`
 
 const UserWrapper = styled.View`
   width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+
   padding: 0 24px;
+  margin-top: ${RFValue(57)}px;
 `;
 
 const UserInfo = styled.View`
@@ -50,6 +59,43 @@ const UserName = styled.Text`
   color: ${({ theme }) => theme.colors.shape};
 `;
 
+const Icon = styled(Feather)`
+  font-size: ${RFValue(20)}px;
+  color: ${({ theme }) => theme.colors.secondary};
+`;
+
+const HighLightCards = styled.ScrollView.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+  contentContainerStyle: { paddingHorizontal: 24 }
+})`
+  width: 100%;
+  position: absolute;
+  margin-top: ${RFPercentage(20)}px;
+`;
+
+const Transactions = styled.View`
+  flex: 1;
+  padding: 0 24px;
+
+  margin-top: ${RFPercentage(10)}px;
+`;
+
+const Title = styled.Text`
+  font-size: ${RFValue(18)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  margin-bottom: 16px;
+`;
+
+const TransactionsList = styled(
+  FlatList as new (props: FlatListProps<DataListProps>) => FlatList<DataListProps>
+).attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingBottom: 15,
+  },
+})``;
+
 export { 
   Container, 
   Header, 
@@ -59,4 +105,9 @@ export {
   User, 
   UserGreeting, 
   UserName, 
+  Icon,
+  HighLightCards,
+  Transactions,
+  Title,
+  TransactionsList,
 };

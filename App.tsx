@@ -28,7 +28,7 @@ export default function App() {
   return (
     <ThemeProvider theme={GlobalTheme}>
       <Dashboard />
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </ThemeProvider>
   )
 }
